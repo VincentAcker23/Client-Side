@@ -2,3 +2,16 @@
 <button type="button" onclick="alert('You clicked a button')">
   Click Me!
 </button>
+
+<section>
+  <header><h3>Current Date and Time</h3></header>
+  <script> 
+    //create a variable
+    currentDT = new Date();
+    //variable to hold the string representation of the current date
+    localTime = currentDt.toString();
+    uniTime = CurrentDt.toGMTString();
+   
+   //display or write the time on the page
+    document.write(<p>"Local time: " + localTime + </p>")
+  </script>
