@@ -8,12 +8,20 @@
   <script> 
     //create a variable
     currentDT = new Date();
+    
+    
     //variable to hold the string representation of the current date
     localTime = currentDt.toString();
-    uniTime = CurrentDt.toGMTString();
+    uniTime = currentDt.toGMTString();
    
-   //display or write the time on the page
-    document.write(<p>"Local time: " + localTime + </p>")
-    document.write(<p>"Universal time: " + uniTime + "<p>")  
-  
+     //display or write the time on the page
+    document.write("<p><strong>Local time:</strong> " + localTime + "</p>")
+    document.write("<p><strong>Universal time:</strong> " + uniTime + "</p>")  
+    
+    hours = currentDt.getHours(); //get the hours from the current time
+    minutes = currentDt.getMinutes(); //get the minutes from the current time
+    seconds = currentDt.getSeconds(); //get the seconds from the current time
+    
+    document.write("<p><strong>"  + hours + ":"
+    
   </script>
