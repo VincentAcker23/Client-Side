@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+          <meta charset="utf-8">
+          <title>Event Handler Example</title>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge">
+          <meta name="viewport" content="width=device-width, intial-scale=1">
+
+          <script src="mathGame.js"></script>
+          </head>
+          <body>
+            <h1>Event Handler Example</h1>
+            <div>
+                <a href="#"
+                onclick="return func();">Go nowhere but here!</a>
+             <button onclick="alert('A button was pressed');">Click me!</button>
+            </div>
+            <script type="text/javascript">
+                function func () {
+                    alert("Hello, a link was clicked!")
+                }
+                </script>
+
+            <h1>Multiplication Practice Game</h1>
+<form id="mygame" name="mygame">
+    <span id="showMessage"></span>
+    <span id="num1"></span> x <span id="num2"></span>?
+    <input type="text" id="numberGuess">
+    <input type="submit"id="submitAnswer" onclick="checkAnswer()"><br>
+</form>
+<p>&nbsp;</p>
+<h2>Another way?</h2>
+<input type="submit" value="Generate Two Random Numbers" onclick=""
