@@ -22,8 +22,6 @@ function addToList() {
     close.className= "close";
     };
   };
-  
-  //have X remove list item on click
     document.body.addEventListener("click", function(event) {
       if (event.target.className == "close")
         event.target.parentElement.style.display="none";
@@ -34,6 +32,10 @@ function addToList() {
       if (event.target.tagName == "LI")
         event.target.classList.toggle("check");
     });
+    function removefromList() {
+        var itemToRemove = document.getElementById(item);
+        itemToRemove.parentNode.removeChild(itemToRemove);
+    }
   
   
   
