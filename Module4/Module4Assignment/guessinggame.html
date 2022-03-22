@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, intial-scale=1" />
+    <title>Document</title>
+    <style>
+      #container {
+        margin: auto;
+        border: 5px solid lightBlue;
+        font-size: 30px;
+        padding: 10px;
+        text-align: center;
+        height: 260px;
+        width: 660px;
+        background-color: gold;
+      }
+      #userInput{
+          width:170px;
+          height:23px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <p>Guess a number between 1 and 100</p>
+      <p id="outputText">Enter a number below</p>
+      <input id="userInput" />
+      <button id="enterButton">Enter</button>
+      <button id="againButton">Play again</button>
+    </div>
+    <script>
+      var enterButton = document.getElementById('enterButton');
+var againButton = document.getElementById('againButton');
+var output = document.getElementById('outputText');
+
+var randomNumber = Math.ceil(Math.random() *100);
+
+function checkNumber(){
+    var input = document.getElementById('userInput').value;
+    if(input == randomNumber){
+        output.innerHTML="Congratulations! You guessed the correct number "+ ","+" it was"+ randomNumber;
+        output.style.color="green";
+    }
+    else if(input>randomNumber && input<100){
+        output.innnerHTML="You guessed too high";
+    }
+    else if (input<randomNumber && input>1){
+        output.innerHTML="You guessed too low"
+    }
+    else if(input<1){
+        output.innerHTML="Higher";
+    }
+    else if (isNaN(input)){
+        output.innerHTML="That is not a number!";
+    }
+    else{
+        output.innerHTML="Lower"
+    }
+}
+enterButton.addEventListener('click', checkNumber);
+againButton.addEventListener('click', function(){
+    location.reload();
+})
+
+    </script>
+  </body>
+</html>
