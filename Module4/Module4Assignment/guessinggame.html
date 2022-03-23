@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, intial-scale=1" />
+    <meta name="viewport" content="width=device-width, intial-scale=1.0">
     <title>Document</title>
     <style>
       #container {
@@ -14,11 +14,14 @@
         text-align: center;
         height: 260px;
         width: 660px;
-        background-color: gold;
+        background-color: rgb(76, 0, 255);
       }
       #userInput{
           width:170px;
           height:23px;
+      }
+      #outputText{
+        color:blanchedalmond;
       }
     </style>
   </head>
@@ -26,7 +29,7 @@
     <div id="container">
       <p>Guess a number between 1 and 100</p>
       <p id="outputText">Enter a number below</p>
-      <input id="userInput" />
+      <input id="userInput">
       <button id="enterButton">Enter</button>
       <button id="againButton">Play again</button>
     </div>
@@ -35,19 +38,19 @@
 var againButton = document.getElementById('againButton');
 var output = document.getElementById('outputText');
 
-var randomNumber = Math.ceil(Math.random() *100);
+var randomNumber = Math.ceil(Math.random()*100);
 
 function checkNumber(){
     var input = document.getElementById('userInput').value;
     if(input == randomNumber){
         output.innerHTML="Congratulations! You guessed the correct number "+ ","+" it was"+ randomNumber;
-        output.style.color="green";
+        output.style.color="yellow";
     }
     else if(input>randomNumber && input<100){
         output.innnerHTML="You guessed too high";
     }
     else if (input<randomNumber && input>1){
-        output.innerHTML="You guessed too low"
+        output.innerHTML="You guessed too low";
     }
     else if(input<1){
         output.innerHTML="Higher";
@@ -56,7 +59,7 @@ function checkNumber(){
         output.innerHTML="That is not a number!";
     }
     else{
-        output.innerHTML="Lower"
+        output.innerHTML="Lower";
     }
 }
 enterButton.addEventListener('click', checkNumber);
