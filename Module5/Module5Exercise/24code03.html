@@ -13,6 +13,7 @@
       you type as a new paragraph below. Type a few keys to try it.
     </p>
     <p id="keys"></p>
+    <p id="ktype"></p>
 
     <script>
     function displayKey(e) {
@@ -24,10 +25,20 @@
        // find the object for the destination paragraph
        var keys_paragraph = document.getElementById('keys');
 
+       var kType = document.getElementById('ktype');
+       message = e.type + "<br>";
+
+       if (e.typ == "keyup"){
+         message += "<br><br>";
+       }
+       kType.innerHTML += message;
+
        // add the character to the paragraph
        keys_paragraph.innerHTML += character;
     }
     document.addEventListener("keypress",displayKey);
+    document.addEventListener("keydown", displayKey);
+    document.addEventListener("keyup", displayKey);
    </script>
   </body>
 </html>
