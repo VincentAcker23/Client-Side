@@ -12,7 +12,7 @@ function graphicBox(box) {
    // create the image element and set its onclick event
    img = document.createElement("img");
    img.addEventListener("click", Toggle);
-   img.src = "images/unchecked.png";
+   img.src = "images/checked.png";
 
    // save the checkbox id within the image ID
    img.id = "img" + box;
