@@ -155,12 +155,9 @@
             </select>
           </fieldset>
         </fieldset>
-        <fieldset id='submitMsg'>
-          <input type="submit" value="Submit" onclick ="alert('Thank you for your order');" />
+        <fieldset id='submitbutton'>
+          <input type="submit" onclick ="document.getElementById('submitbutton').innerHTML = 'Thank you for your order.';" value="Submit"  />
         </fieldset>
-        <script>
-          document.getElementById("").innerHTML = 'Thank you for your order';
-        </script>
      </form>
    </article>
 </body>
