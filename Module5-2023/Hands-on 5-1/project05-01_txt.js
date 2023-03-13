@@ -45,7 +45,7 @@ function countdown(){
       else{
          window.alert("You got " + totalCorrect + "/" +
          correctAnswers.length);
-         timeLeft = quizTime.value;
+         timeLeft = quizTime;
          quizClock.value = timeLeft;
          overlay.className = "hidequiz";
          
