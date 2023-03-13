@@ -30,7 +30,7 @@ let timeID;
 let questionList = document.querySelectorAll("div#quiz input");
 
 startQuiz.onclick = function(){
-   overlay.lastName = "showquiz";
+   overlay.className = "showquiz";
    timeID = setInterval(countdown, 1000);
 
 }
