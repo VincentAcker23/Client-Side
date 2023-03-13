@@ -31,7 +31,7 @@ let questionList = document.querySelectorAll("div#quiz input");
 
 startQuiz.onclick = function(){
    overlay.lastName = "showquiz";
-   timeID = setInterval[countdown, 1000];
+   timeID = setInterval(countdown, 1000);
 
 }
 //countdown function
@@ -58,26 +58,6 @@ function countdown(){
       quizClock.value = timeLeft;
    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*------------- Function to check the student answers ----------------*/
 function checkAnswers() {
    let correctCount = 0;
