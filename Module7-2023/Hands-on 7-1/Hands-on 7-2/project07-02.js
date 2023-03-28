@@ -1,15 +1,3 @@
-"use strict";
-/*    JavaScript 7th Edition
-      Chapter 7
-      Project 07-02
-
-      Project to deal cards from a shuffled poker deck
-      Author: Vincent Acker Jr.
-      Date:   3/28/23
-
-      Filename: project07-02.js
-*/
-
 let deckStr = `Ace of Hearts, King of Hearts, Queeen of Hearts, Jack of Hearts,
                10 of Hearts, 9 of Hearts, 8 of Hearts, 7 of Hearts, 6 of Hearts,
                5 of Hearts, 4 of Hearts, 3 of Hearts, 2 of Hearts,
@@ -28,8 +16,19 @@ let cardsLeft = document.getElementById("cardsLeft");
 let deck = [];
 
 document.getElementById("deal").onclick = function() {   
-   
 
+function newDeck() {
+     deck = deckStr.split(/,/g);
+     deck.sort(shuffle);
+function shuffle(a, b) {
+    return 0.5 - Math.random();
+        }
+    }
+for(let i = 0; i < cards.length; i++) {
+    if(deck.length === 0) {
+        newDeck();  
+    }
+   cards[i].textContent = deck.pop();
+        cardsLeft.textContent = deck.length;
+    }
 }
-
-            
