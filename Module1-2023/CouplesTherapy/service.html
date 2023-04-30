@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Things</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <nav>
+      <a href="./index.html">Home</a>
+      <a href="./about.html">About</a>
+      <a href="./service.html">Service</a>
+      <a href="./contact.html">Contact</a>
+    </nav>
+    <form id="powercalculator" action="">
+        <fieldset>
+        <legend>GAME CONSOLE POWER CONSUMPTION CALCULATOR</legend>
+        <p>
+        <label for="power">Rated Power Of Your Appliance (Watt)</label>
+        <input id="power" name="power" type="number" />
+        </p>
+        <p>
+        <label for="time">Daily Operational Hours ( Hours )</label>
+        <input id="time" name="time" type="number" />
+        </p>
+        <p>
+        <label for="cost">Electricity Tariff (Any currency)</label>
+        <input id="cost" name="cost" type="number" />
+        </p>
+        <p>
+        <input type="submit" value="Calculate Power Consumption" />
+        or
+        <input type="reset" value="Reset" />
+        </p>
+        <p>
+        <label for="dailypower">Daily Power Cosumption(kWh)</label>
+        <input id="dailypower" name="dailypower" type="number" />
+        </p>
+        </fieldset>
+        </form>
+        
+        <script>
+        (function () 
+        {
+        function calculatepower(power, time, cost) 
+        {
+        power = parseFloat(power);
+        time = parseFloat(time);
+        cost = parseFloat(cost);
+        return ((time*power)/100);
+        }
+        
+        var powercalculator = document.getElementById("powercalculator");
+        if (powercalculator) 
+        {
+        powercalculator.onsubmit = function () 
+        {
+        this.dailypower.value = calculatepower(this.power.value, this.time.value, this.cost.value);
+        return false;
+        };
+        }
+        }());
+        </script>
+        </body>
+        </html>
+  </body>
+
+</html>
