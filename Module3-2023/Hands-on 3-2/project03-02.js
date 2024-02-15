@@ -9,7 +9,7 @@
       Filename: project03-02.js
 */
 
-let captions = new Array(14);
+let captions = new Array(13);
 captions[0] = "International Space Station fourth expansion [2009]";
 captions[1] = "Assembling the International Space Station [1998]";
 captions[2] = "The Atlantis docks with the ISS [2001]";
