@@ -4,8 +4,8 @@
 
       Tipton Turbines
       Baseball Schedule Data
-      Author: 
-      Date:   
+      Author: Vincent Acker Jr
+      Date: 02-15-24
 
       Filename: schedule.js
 */
