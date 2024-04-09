@@ -14,7 +14,7 @@ window.addEventListener("load", createLightBox);
 window.addEventListener("load", setupGallery);
 
 function createLightBox() {
-  let lightbox = document.getElementById("lightbox");
+  let lightBox = document.getElementById("lightbox");
 
   let lbTitle = document.createElement("h1");
   let lbCounter = document.createElement("div");
@@ -23,27 +23,27 @@ function createLightBox() {
   let lbPlay = document.createElement("div");
   let lbImages = document.createElement("div");
 
-  lightbox.appendChild(lbTitle);
+  lightBox.appendChild(lbTitle);
   lbTitle.id = "lbTitle";
   lbTitle.textContent = lightboxTitle;
 
-  lightbox.appendChild(lbCounter);
+  lightBox.appendChild(lbCounter);
   lbCounter.id = "lbCounter";
   let currentImg = 1;
   lbCounter.textContent = currentImg + " / " + imgCount;
 
 
-  lightbox.appendChild(lbPrev);
+  lightBox.appendChild(lbPrev);
   lbPrev.id = "lbPrev";
   lbPrev.innerHTML = "&#9664;";
   lbPrev.onclick = showPrev;
 
-  lightbox.appendChild(lbNext);
+  lightBox.appendChild(lbNext);
   lbNext.id = "lbNext";
   lbNext.innerHTML = "&#9654;";
   lbNext.onclick = showNext;
 
-  lightbox.appendChild(lbPlay);
+  lightBox.appendChild(lbPlay);
   lbPlay.id = "lbPlay";
   lbPlay.innerHTML = "&#9199;";
   let timeID;
@@ -59,49 +59,51 @@ function createLightBox() {
     }
   }
 
-  lightbox.appendChild(lbImages);
+  lightBox.appendChild(lbImages);
   lbImages.id = "lbImages";
   for (let i = 0; i < imgCount; i++) 
   {
     let image = document.createElement("img");
     image.src = imgFiles[i];
     image.alt = imgCaptions[i];
+    image.onclick = createOverlay;
     lbImages.appendChild(image);
   }
-}
+  function showNext() {
+    lbImages.appendChild(lbImages.firstElementChild);
+    currentImg < imgCount ? currentImg++ : (currentImg = 1);
+    lbCounter.textContent = currentImg + " / " + imgCount;
+  }
+  function showPrev() {
+    lbImages.insertBefore(lbImages.lastElementChild, lbImages.firstElementChild);
+    currentImg > 1 ? currentImg-- : (currentImg = imgCount);
+    lbCounter.textContent = currentImg + " / " + imgCount;
+  }
+  function createOverlay() {
+    let overlay = document.createElement("div");
+    overlay.id = "lbOverlay";
+  
+    let figureBox = document.createElement("figure");
+    overlay.appendChild(figureBox);
+  
+    document.body.appendChild(overlay);
+    let overlayImage = this.cloneNode("true");
+    figureBox.appendChild(overlayImage);
+  
+    let overlayCaption = document.createElement("figcaption");
+    overlayCaption.textContent = this.alt;
+    figureBox.appendChild(overlayCaption);
 
-function createOverlay() {
-  let overlay = document.createElement("div");
-  overlay.id = "lbOverlay";
-
-  let figureBox = document.createElement("figure");
-  overlay.appendChild(figureBox);
-
-  let overlayImage = this.cloneNode("true");
-  figureBox.appendChild(overlayImage);
-
-  let overlayCaption = document.createElement("figcaption");
-  overlayCaption.textContent = this.alt;
-  figureBox.appendChild(overlayCaption);
-
-  let closeBox = document.createElement("div");
-  closeBox.id = "lbOverlayClose";
-  closeBox.innerHTML = "&times";
-  closeBox.onclick = function () {
-    document.body.removeChild(overlay);
-  };
-  overlay.appendChild(closeBox);
-  document.body.appendChild(overlay);
-}
-function showNext() {
-  lbImages.appendChild(lbImages.firstElementChild);
-  currentImg < imgCount ? currentImg++ : (currentImg = 1);
-  lbCounter.textContent = currentImg + " / " + imgCount;
-}
-function showPrev() {
-  lbImages.insertBefore(lbImages.lastElementChild, lbImages.firstElementChild);
-  currentImg > 1 ? currentImg-- : (currentImg = imgCount);
-  lbCounter.textContent = currentImg + " / " + imgCount;
+    let closeBox = document.createElement("div");
+    closeBox.id = "lbOverlayClose";
+    closeBox.innerHTML = "&times;";
+    closeBox.onclick = function() 
+    {
+      document.body.removeChild(overlay);
+    }
+      overlay.appendChild(closeBox);
+      document.body.appendChild(overlay);
+  }
 }
 function setupGallery() {
   let imageCount = imgFiles.length;
