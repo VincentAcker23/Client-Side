@@ -3,51 +3,45 @@
       Project 03-04
 
       Application to write a list of customer reviews
-      Author: 
+      Author: Vincent Acker Jr.
       Date:   
 
       Filename: project03-04.js
 */
 
-let reviewers = ["Nitensa1", "Reiter", "rn", "Teme"];
-let reviewType = ["e", "W", "E", "C"];
-let stars = ["*", "*", "*", "*"];
-let reviewDates = ["-", "-", "-", "-"];
+let reviewers = ["Sarah", "WillHa85", "GoldFry26", "Mittens41", "Tompkins8"];
+let reviewType = ["P", "P", "N", "N", "P"]
+let stars = [5, 2, 1, 4, 5];
+let reviewDates = ["11/19/24", "11/18/2024", "11/17/2024", "11/15/2024", "11/10/2024"];
 let reviews = [
-  "Favorite Workout Game",
-  "Reece raze",
-  "Rating FRR",
-  "Sn",
+   "Literally the best game I have ever played!",
+   "I've owned all of the Dance Off games from the beginning. I have lost 6 pounds since I started playing.",
+   "A so-so release of this well-established game. Where this release fails is in the choreography. Many of the moves follow predictable patterns. I hope the next release improves the choreography .",
+   "The installation was buggy and kept crashing my gaming console. I spent several hours on tech support with no solution to my problem. I finally returned it and got my money back. I wish I could give it a zero star rating.",
+   "The latest version of Dance Off improves upon the 8th Edition only slightly; still is one of the best dance-style games on the market.",
 ];
-let reviewTitles = ["My Favorite Workout Game", "Reece raze", "Rating FRR", "Sn"];
+let reviewTitles = ["#1 Go to game!", "My Favorite Workout Game", "Poor Choreography", "Buggy with Poor Tech Support", "Nice Improvement"];
 
-// Function to display the customer reviews
-function displayReviews() {
-  // Access the HTML element where you want to display the reviews
-  let reviewContainer = document.querySelector("#review-container");
-
-  // Iterate through the arrays and create HTML elements for each review
-  for (let i = 0; i < reviewers.length; i++) {
-    // Create the necessary HTML elements
-    let reviewDiv = document.createElement("div");
-    let reviewTitle = document.createElement("h3");
-    let reviewerName = document.createElement("p");
-    let reviewContent = document.createElement("p");
-
-    // Set the content for each element based on the corresponding review data
-    reviewTitle.textContent = reviewTitles[i];
-    reviewerName.textContent = "Reviewer: " + reviewers[i];
-    reviewContent.textContent = reviews[i];
-
-    // Append the created elements to the reviewDiv
-    reviewDiv.appendChild(reviewTitle);
-    reviewDiv.appendChild(reviewerName);
-    reviewDiv.appendChild(reviewContent);
-
-    // Append the reviewDiv to the reviewContainer
-    reviewContainer.appendChild(reviewDiv);
+function starImages(rating) {
+      let imageText = "";
+      for (let i = 1; i <= rating; i++) {
+          imageText += "<img src='star.png' alt='' />";
+      }
+      return imageText;
   }
-}
+  let reviewContainer = document.getElementsByTagName("article")[0];
 
-// Call the displayReviews function to populate the customer reviews
-displayReviews();
+  for (let i = 0; i < reviewers.length; i++) {
+      let reviewCode = "";
+      if (i % 2 === 0) {
+          reviewCode += "<table class='prime'>";
+      } else {
+          reviewCode += "<table class='new'>";
+      }
+      reviewCode += "<tr><th>By</th><td>" + reviewers[i] + "</td></tr>";
+      reviewCode += "<tr><th>Review Date</th><td>" + reviewDates[i] + "</td></tr>";
+      reviewCode += "<tr><td colspan='2'>" + reviews[i] + "</td></tr>";
+      reviewCode += "</table>";
+      
+      reviewContainer.insertAdjacentHTML('beforeend', reviewCode);
+  }
