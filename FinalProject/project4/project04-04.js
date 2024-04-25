@@ -52,11 +52,21 @@ function runTheRegister() {
         document.getElementById('warning').innerHTML = err;
     }
 
-	
+	try {
+		if (cashBox > changeBox)
+		{
+			throw "Bill exceeds what is allowed!";
+		}
+	}
+	catch(err)
+	{
+		document.getElementById('warning').innerHTML = err;
+	}
 }
 
 // Function to calculate the change by each unit of currency
 function calcChange(changeValue) {
+	
 	// Determine the number of $20 bills
 	let bill20Amt = determineCoin(changeValue, 20);
 	document.getElementById("bill20").innerHTML = bill20Amt;
@@ -100,6 +110,17 @@ function calcChange(changeValue) {
 	// The Math.round() method rounds the value to the nearest integer
 	let coin1Amt = Math.round(changeValue * 100);
 	document.getElementById("coin1").innerHTML = coin1Amt;
+	try 
+	{
+		if (changeValue > bill20Amt)
+	{
+		throw "Amount exceeds what is allowed!";
+	}
+}
+catch(err)
+{
+	document.getElementById('warning').innerHTML = err;
+}
 }
 
 
