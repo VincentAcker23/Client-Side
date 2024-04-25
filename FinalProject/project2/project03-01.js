@@ -2,7 +2,7 @@
       Chapter 3
       Project 03-01
 
-      Application to calculate total order cost
+      Application to calculate total order cost with quantity
       Author: Vincent Acker Jr.
       Date:   4/18/23
 
@@ -10,7 +10,6 @@
 */
 
 //Declare the variable for MenuItems
-//variable for menu
 let menuItems = document.getElementsByClassName("menuItem");
 for(let i = 0; i < menuItems.length; i++) {
     menuItems[i].addEventListener('click',()=>{
@@ -18,15 +17,25 @@ for(let i = 0; i < menuItems.length; i++) {
     })
 }
 
-
-//Function for calcTotal
+// Function for calcTotal
 function calcTotal(){
     let orderTotal = 0;
-    for(i = 0; i < menuItems.length; i++) {
+    let taxRate = 0.07; // 7% tax rate
+    let subtotal = 0;
+
+    for(let i = 0; i < menuItems.length; i++) {
         if(menuItems[i].checked) {
-            orderTotal += (Number(menuItems[i].value) * 1);
+            let quantity = parseInt(document.getElementById("quantity" + (i + 1)).value);
+            let itemCost = Number(menuItems[i].value);
+            subtotal += itemCost * quantity;
         }
     }
+    
+    let taxAmount = subtotal * taxRate;
+    orderTotal = subtotal + taxAmount;
+
+    document.getElementById("subtotal").innerHTML = formatCurrency(subtotal);
+    document.getElementById("taxAmount").innerHTML = formatCurrency(taxAmount);
     document.getElementById("billTotal").innerHTML = formatCurrency(orderTotal);
 }
 
