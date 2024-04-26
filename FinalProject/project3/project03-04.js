@@ -10,7 +10,7 @@
 */
 
 let reviewers = ["Sarah", "WillHa85", "GoldFry26", "Mittens41", "Tompkins8"];
-let reviewType = ["P", "P", "N", "N", "P"]
+let reviewType = ["N", "P", "N", "", ""]
 let stars = [5, 2, 1, 4, 5];
 let reviewDates = ["11/19/24", "11/18/2024", "11/17/2024", "11/15/2024", "11/10/2024"];
 let reviews = [
@@ -24,12 +24,11 @@ let reviewTitles = ["#1 Go to game!", "My Favorite Workout Game", "Poor Choreogr
 
 function starImages(rating) {
       let imageText = "";
-      for (let i = 1; i <= rating; i++) {
-          imageText += "<img src='star.png' alt='' />";
+      for (let i = 1; i <=rating; i++) {
+          imageText += "<img src='star.png' alt= >";
       }
       return imageText;
   }
-  let reviewContainer = document.getElementsByTagName("article")[0];
 
   for (let i = 0; i < reviewers.length; i++) {
       let reviewCode = "";
@@ -38,10 +37,13 @@ function starImages(rating) {
       } else {
           reviewCode += "<table class='new'>";
       }
+      reviewCode += "<caption>" + reviewTitles[i] + "</caption";
       reviewCode += "<tr><th>By</th><td>" + reviewers[i] + "</td></tr>";
       reviewCode += "<tr><th>Review Date</th><td>" + reviewDates[i] + "</td></tr>";
       reviewCode += "<tr><td colspan='2'>" + reviews[i] + "</td></tr>";
       reviewCode += "</table>";
-      
+     
+      let reviewContainer = document.getElementsByTagName("article")[0];
+
       reviewContainer.insertAdjacentHTML('beforeend', reviewCode);
   }
